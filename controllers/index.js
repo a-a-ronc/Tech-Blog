@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const homeRoutes = require('./homeRoutes');
 const apiRoutes = require('./api');
-const usersRoutes = require('./usersRoutes');
+const usersRoutes = require('./signUpPageRoutes');
 const profileRoutes = require('./profileRoutes');
 const productsRoutes = require ('./productsRoutes');
-const contactRoutes = require('./contactRoutes');
-const musicVideosRoutes = require('./musicVideosRoutes');
+const contactRoutes = require('./dashboardPageRoutes');
+const musicVideosRoutes = require('./editPostRoutes');
 // const withAuth = require('../utils/auth');
 
 //https://localhost:3001/

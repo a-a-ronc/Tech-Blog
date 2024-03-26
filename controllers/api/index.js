@@ -1,28 +1,17 @@
 const router = require('express').Router();
-const Products = require('../../models/Products');
-const logoutRoutes = require('./logoutRoutes');
 const loginRoutes = require('./loginRoutes');
-const buyProductsRoutes = require('./buyProductsRoutes');
+const logoutRoutes = require('./logoutRoutes');
+const signupRoutes = require('./signupRoutes');
+const contentRoutes = require('./contentRoutes');
+const deleteUserRoutes = require('./deleteUserRoutes');
+const editPostApiRoutes = require('./editPostApiRoutes');
 
+// these are all prepended with `/api`
 router.use('/login', loginRoutes);
 router.use('/logout', logoutRoutes);
-
-router.use('/buyproduct', buyProductsRoutes);
-
-// product routes
-// .get /api/products -> res.render('product', {productData})
-// finds all products and returns them as a JSON object
-router.get('/products', async (req, res) => {
-    const products = await Products.findAll();
-    res.json(products);
-});
-
-// gets products by their primary key, which is ID, as designated by productData.json
-router.get('/products/:id', async (req, res) => {
-    const productByID = await Products.findByPk(req.params.id);
-    // console.log(userByID);
-    res.json(productByID);
-});
+router.use('/signup', signupRoutes);
+router.use('/delete', deleteUserRoutes);
+router.use('/editpost', editPostApiRoutes);
+router.use(contentRoutes);
 
 module.exports = router;
-
