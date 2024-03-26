@@ -1,18 +1,57 @@
-// homepage
-// nav bar, logo, hero image, example product cards, footer
+require('dotenv').config();
 
-// login/signup page
-// collect name, email, and password
+const path = require('path');
+const exphbs = require('express-handlebars');
+const session = require('express-session');
+const router = require('./controllers');
+const sequelize = require('./config/connection');
 
-// product page with fake buy's
-// include links to preview music?
+var express = require('express');
+var app = express();
 
-// account information page. Store the following data:
-// fake payment data (card, expiry, CVV);
-// shipping address and phone
+port = process.env.PORT || 3001;
 
-// previous purchases page
+// this will make everything in the public folder accessible when we are using our web server.
+app.use(express.static(__dirname + '/public'));
 
-// checkout page showing basket of items to be purchased with a total amount
 
-// thank you page showing purchase confirmation email the reciept will be sent to
+// here we make a session object that manages user sessions and expires the cookie eventually.
+const sess = {
+  secret: process.env.SESSION_SECRET,
+  cookie: {
+    maxAge: 1800000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'strict',
+  },
+  resave: false,
+  saveUninitialized: true,
+  // TODO: figure out session storage
+  // store: new SequelizeStore({
+  //   db: sequelize
+  // })
+};
+
+app.use(session(sess))
+
+const hbs = exphbs.create({});
+
+// Setting app engine and view engine (allowing ourselves to use templates)
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+// This is our middleware (software run by webserver each time a request is made)
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '/public')));
+
+// Creates router that knows which handler to use
+app.use(router);
+
+sequelize.sync({ force: false }).then(() => {
+  app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`);
+  })
+});
+
+// start the webserver

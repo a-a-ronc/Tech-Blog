@@ -1,26 +1,24 @@
 const router = require('express').Router();
-const homeRoutes = require('./homeRoutes');
-const apiRoutes = require('./api');
-const usersRoutes = require('./signUpPageRoutes');
-const profileRoutes = require('./profileRoutes');
-const productsRoutes = require ('./productsRoutes');
-const contactRoutes = require('./dashboardPageRoutes');
-const musicVideosRoutes = require('./editPostRoutes');
-// const withAuth = require('../utils/auth');
+const homepageRoutes = require('./homepageRoutes');
+const apiRouter = require('./api');
+const signupRoutes = require('./signupPageRoutes');
+const dashboardRoutes = require('./dashboardPageRoutes');
+// const loginRoutes = require('./loginRoutes');
+// const logoutRoutes = require('./logoutRoutes');
+const editPostRoutes = require('./editPostRoutes');
 
-//https://localhost:3001/
-router.use('/', homeRoutes);
+router.use('/api', apiRouter);
+router.use('/', homepageRoutes);
+router.use('/signup', signupRoutes);
+router.use('/dashboard', dashboardRoutes);
+router.use('/editpost', editPostRoutes);
 
-router.use('/api', apiRoutes); 
+// router.use('/login', loginRoutes);
+// router.use('/logout', logoutRoutes);
 
-router.use('/users', usersRoutes);
-
-router.use('/profile', profileRoutes);
-
-router.use('/products', productsRoutes);
-
-router.use('/contact', contactRoutes);
-
-router.use('/musicvideos', musicVideosRoutes);
+// 404 route because its not anything that we have already defined
+router.get('*', (req, res) => {
+  res.status(404).send('<h1>404</h1>')
+})
 
 module.exports = router;

@@ -36,7 +36,7 @@ const hbs = exphbs.create({});
 
 // Setting app engine and view engine (allowing ourselves to use templates)
 app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');mn  
+app.set('view engine', 'handlebars');
 
 // This is our middleware (software run by webserver each time a request is made)
 app.use(express.json());
