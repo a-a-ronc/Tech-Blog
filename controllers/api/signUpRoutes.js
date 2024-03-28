@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, User } = require('../../models');
 
 // TODO: If the user is not logged in then they should be redirected to the login page
 router.get('/', async function (req, res) {

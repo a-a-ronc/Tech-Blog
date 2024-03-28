@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const homepageRoutes = require('./homepageRoutes');
+const homepageRoutes = require('./homeRoutes');
 const apiRouter = require('./api');
-const signupRoutes = require('./signupPageRoutes');
+const signupRoutes = require('./signUpPageRoutes');
 const dashboardRoutes = require('./dashboardPageRoutes');
 // const loginRoutes = require('./loginRoutes');
 // const logoutRoutes = require('./logoutRoutes');
