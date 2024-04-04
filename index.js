@@ -26,10 +26,7 @@ const sess = {
   },
   resave: false,
   saveUninitialized: true,
-  // TODO: figure out session storage
-  // store: new SequelizeStore({
-  //   db: sequelize
-  // })
+
 };
 
 app.use(session(sess))
@@ -54,4 +51,3 @@ sequelize.sync({ force: false }).then(() => {
   })
 });
 
-// start the webserver

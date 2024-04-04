@@ -10,9 +10,6 @@ router.post('/:productID', async (req, res) => {
     
     const product = await Products.findByPk(req.params.productID);
 
-    // console.log(__filename, userData);
-    // console.log(__filename, product);
-
     if (userData && product) {
       console.log("smoke test for having both userdata and product");
 
