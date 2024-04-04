@@ -62,4 +62,4 @@ This is a rough list of things that need to be implemented in order for this pro
 ### TODOs
 Things that need to be done with the existing codebase.
 
-So the required functionality is not all there. I essentially got our project and made modifications to match the application requirements. I cleaned up the 
+So the required functionality is not all there. I essentially got our project and made modifications to match the application requirements. I cleaned up the files but the only functionality that is missing is the ability to login. Everything else works. It would also be nice to implement some cleaner styling so that it looks pretty. 
